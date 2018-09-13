@@ -3,21 +3,28 @@ import request from 'superagent';
 import * as types from './action-types';
 import * as endpoints from './endpoints';
 
-const requestCurrentSeason = () => {
-    return {
+const requestCurrentSeason = (dispatch, resolve) => {
+    return resolve({
         type: types.REQUEST_CURRENT_SEASON
-    };
+    });
 };
 
-const recieveCurrentSeason = features => {
-    return {
+const recieveCurrentSeason = (dispatch, resolve, data) => {
+    return resolve({
         type: types.RECIEVE_CURRENT_SEASON,
-        features,
-    }
+        data,
+    });
 };
 
-const getCurrentSeason = () => request.get(endpoints.GET_CURRENT_SEASON).then(res => JSON.parse(res)).catch(err => console.error(err));
+const getCurrentSeason = (dispatch, resolve) => {
+    dispatch('requestCurrentSeason');
+    return request.get(endpoints.GET_CURRENT_SEASON)
+            .then(res => recieveCurrentSeason(dispatch, resolve, res.body))
+            .catch(err => console.error(err));
+};
 
 export default {
+    requestCurrentSeason,
+    recieveCurrentSeason,
     getCurrentSeason,
 }
