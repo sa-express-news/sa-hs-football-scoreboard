@@ -1,4 +1,5 @@
 import filterData   from './filterData';
+import mapHelmet    from './mapHelmet';
 
 /*************************************************
  * This module maps each game to a workable format using mapGameProperties,
@@ -38,14 +39,18 @@ const mapGameProperties = game => ({
     fullDate: game.fullDate.date,
     time: `${game.date.hours.replace(/^0+/, '')}:${game.date.minutes}${game.date.tt}`,
     home: {
+        id: game.home.id,
         name: game.home.name,
         points: game.home.points,
         district: game.home.district.name,
+        helmet: mapHelmet(game.home.id),
     },
     away: {
+        id: game.away.id,
         name: game.away.name,
         points: game.away.points,
         district: game.away.district.name,
+        helmet: mapHelmet(game.away.id),
     },
 });
 

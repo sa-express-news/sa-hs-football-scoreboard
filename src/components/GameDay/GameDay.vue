@@ -35,8 +35,10 @@ export default {
 </script>
 
 <style lang="scss">
+    @import '../../styles/base.scss';
+
     div.dateline {
-        color: #717072;
-        border-bottom: 0.5px solid rgba(113,112,114, 0.1);
+        color: $light-grey;
+        border-bottom: 0.5px solid rgba($light-grey, 0.1);
     }
 </style>
