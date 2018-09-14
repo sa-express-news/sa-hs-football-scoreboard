@@ -15,40 +15,22 @@ import mapHelmet    from './mapHelmet';
  * This tree will be used for sorting the data before rendering.
  *************************************************/
 
-const monthMap = {
-    '01': 'Jan.',
-    '02': 'Feb.',
-    '03': 'Mar.',
-    '04': 'Apr.',
-    '05': 'May',
-    '06': 'Jun.',
-    '07': 'Jul.',
-    '08': 'Aug.',
-    '09': 'Sep.',
-    '10': 'Oct.',
-    '11': 'Nov.',
-    '12': 'Dec.',
-};
-
-const getMonth = num => monthMap[num];
-
 const mapGameProperties = game => ({
-    id: game.game.id,
+    id: parseInt(game.game.id, 10),
     location: game.location.name,
-    date: `${game.date.weekday}. ${getMonth(game.date.month)} ${game.date.date}`,
-    fullDate: game.fullDate.date,
-    time: `${game.date.hours.replace(/^0+/, '')}:${game.date.minutes}${game.date.tt}`,
+    date: game.fullDate.date,
+    time: `${game.date.hours.replace(/^0+/, '')}:${game.date.minutes} ${game.date.tt}`,
     home: {
-        id: game.home.id,
+        id: parseInt(game.home.id, 10),
         name: game.home.name,
-        points: game.home.points,
+        points: typeof game.home.points === 'string' ? parseInt(game.home.points, 10) : null,
         district: game.home.district.name,
         helmet: mapHelmet(game.home.id),
     },
     away: {
-        id: game.away.id,
+        id: parseInt(game.away.id, 10),
         name: game.away.name,
-        points: game.away.points,
+        points: typeof game.away.points === 'string' ? parseInt(game.away.points, 10) : null,
         district: game.away.district.name,
         helmet: mapHelmet(game.away.id),
     },
@@ -59,25 +41,25 @@ export default (hash, unmappedGame) => {
     if (filterData.isDistrict(unmappedGame) || !filterData.isInDateRange(unmappedGame)) return hash;
 
     const game = mapGameProperties(Object.assign({}, unmappedGame));
-    
+
     // if no hash exists for this date, build one
-    if (!hash[game.fullDate]) {
-        hash[game.fullDate] = {
-            date: game.fullDate,
+    if (!hash[game.date]) {
+        hash[game.date] = {
+            date: game.date,
             districts: {}, 
         };
     }
 
     // if no hash exists for this district on this date, build one
-    if (!hash[game.fullDate].districts[game.home.district]) {
-        hash[game.fullDate].districts[game.home.district] = {
+    if (!hash[game.date].districts[game.home.district]) {
+        hash[game.date].districts[game.home.district] = {
             district: game.home.district,
             games: [],
         };
     }
 
     // add game to district hash inside date hash
-    hash[game.fullDate].districts[game.home.district].games.push(game);
+    hash[game.date].districts[game.home.district].games.push(game);
 
     return hash;
 };

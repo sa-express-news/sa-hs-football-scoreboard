@@ -25,7 +25,7 @@ export default {
         return new Store();
     },
     mounted: function () {
-        this.dispatch('getCurrentSeason').then(() => console.log(this.state));
+        this.dispatch('getCurrentSeason');
     },
     components: {
         'game-day': GameDay,
@@ -34,12 +34,18 @@ export default {
 </script>
 
 <style lang="scss">
+    @import '../../styles/base.scss';
+
     div#scoreboard {
         font-family: 'Oswald', sans-serif;
-        font-size: 1em;
-        width: 90%;
-        max-width: 1200px;
+        font-size: 12px;
+        width: 98%;
+        max-width: 1000px;
         margin: 0 auto;
+
+        @include mediaquery(500px) {
+            font-size: 16px;
+        }
 
         h1 {
             font-size: 1.5em;
