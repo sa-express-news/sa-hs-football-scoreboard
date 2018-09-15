@@ -1,6 +1,6 @@
 <template>
     <div id="scoreboard">
-        <h1>Schedule</h1>
+        <h1>Regional high school football schedule</h1>
         <game-day
             v-for="(day, idx) in state.schedule"
             :key="idx"

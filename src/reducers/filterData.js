@@ -1,5 +1,7 @@
 import moment from 'moment';
 
+import schoolHash from './schoolHash';
+
 const isDistrict = game => game.isDistrict === '1';
 
 const setDateRange = (today, step) => {
@@ -23,7 +25,10 @@ const isInDateRange = () => {
     }
 };
 
+const isSASchool = id => !!schoolHash[id];
+
 export default {
     isDistrict,
+    isSASchool,
     isInDateRange: isInDateRange(),
 }
