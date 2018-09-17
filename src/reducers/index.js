@@ -10,7 +10,7 @@ export default (state, action) => {
             });
 
         case types.RECIEVE_CURRENT_SEASON:
-            console.log(action.data.schedules.list);
+            buildSAMap(parseGames(action.data.schedules.list));
             return Object.assign({}, state, {
                 schedule: parseGames(action.data.schedules.list),
                 isFetching: false,

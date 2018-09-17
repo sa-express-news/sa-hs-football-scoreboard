@@ -1,5 +1,5 @@
 import filterData   from './filterData';
-import mapHelmet    from './mapHelmet';
+import schoolHash    from './schoolHash';
 
 /*************************************************
  * This module maps each game to a workable format using mapGameProperties,
@@ -14,6 +14,8 @@ import mapHelmet    from './mapHelmet';
  * }
  * This tree will be used for sorting the data before rendering.
  *************************************************/
+
+const mapHelmet = id => schoolHash[id] && schoolHash[id].helmet ? schoolHash[id].helmet : '//s.hdnux.com/photos/75/53/02/16167056/4/rawImage.png';
 
 const mapGameProperties = game => ({
     id: parseInt(game.game.id, 10),
@@ -38,7 +40,9 @@ const mapGameProperties = game => ({
 
 export default (hash, unmappedGame) => {
     // if game isn't relevant to our current day of the week, or is not a game at all, bail
-    if (filterData.isDistrict(unmappedGame) || !filterData.isInDateRange(unmappedGame)) return hash;
+    // if (filterData.isDistrict(unmappedGame) || !filterData.isInDateRange(unmappedGame)) return hash;
+
+    if (filterData.isDistrict(unmappedGame)) return hash;
 
     const game = mapGameProperties(Object.assign({}, unmappedGame));
 
