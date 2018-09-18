@@ -58,13 +58,17 @@ In the case of `getCurrentSeason`, our action passes the `RECIEVE_CURRENT_SEASON
 
 `parseGames` does a lot of work and some tests should most definitely be written for it in the near future. In order, here's what it does:
 
- 1. Each game is passed to `mapData` (`reducers/mapData.js`), which first runs the game through a series of filters (defined in `reducers/filterData.js`) that check to make sure the game is 1.) actually a game, 2.) a game being played by a local team (the SA market filter on TeamPlayer extends to cover all South Texas, so we have to filter the list further to just get local teams) and 3.) is a game occuring in the current week (The "current week" is defined as the upcoming Th-Su on Monday, Tuesday and Wednesday and as the ongoing Th-Su if the user visit the site on a Thursday, Friday, Saturday or Sunday). Each filter returns a boolean response.
+ 1. Each game is passed to `mapData` (`reducers/mapData.js`), which first runs the game through a series of filters (defined in `reducers/filterData.js`) that check to make sure the game is 1.) being played by a local team (the SA market filter on TeamPlayer extends to cover all South Texas, so we have to filter the list further to just get local teams) and 2.) is a game occuring in the current week (The "current week" is defined as the upcoming Th-Su on Monday, Tuesday and Wednesday and as the ongoing Th-Su if the user visit the site on a Thursday, Friday, Saturday or Sunday). Each filter returns a boolean response.
 
  2. `mapData` then maps the filtered list of games to a more application friendly object structure – adding helmet images where they exist – before structuring the games into a hirearchal tree that can be used to sort them in the final step:
 
  3. The hirearchal game object is passed to `sortData` (`reducers/sortData.js`). It sorts the games by day and class (eg. 6A-I vs 5A-II vs TAPPS) and then flattens the sorted object back into an array of "game day" objects (Th, F, Sa, Su), each featuring a sorted array `games` property.
 
 Finally, the sorted array of game day objects returned by `sortData` is returned by `parseData`, added to `state.schedule` and returned to the `Index.vue` component. `Index.vue` instantiates a `GameDay` component for each game day object.
+
+#### `reducers/schoolHash.js`
+
+It is worth taking a quick moment to discuss `schoolHash.js`. This file just returns a large object with NewsEngin-assigned team unique IDs as keys and objects as values. These objects each contain a `name<String>` property – the school name – and a `helmet<String>` property – the url to the helmet image stored on the WCM. This helmet list is far from being fully populated. In the near future, it might make sense to switch from helmets to logos.
 
 ## `src/components/GameDay/GameDay.vue`
 

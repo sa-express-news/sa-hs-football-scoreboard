@@ -1,7 +1,16 @@
 export default {
+    // 6A schools
     '5179': {
         name: 'Cibolo Steele',
         helmet: '//s.hdnux.com/photos/75/57/01/16183370/4/rawImage.gif',
+    },
+    '5180': {
+        name: 'New Braunfels Canyon',
+        helmet: '//s.hdnux.com/photos/75/60/62/16190606/4/rawImage.gif',
+    },
+    '228': {
+        name: 'Smithson Valley',
+        helmet: '//s.hdnux.com/photos/75/60/62/16190619/4/rawImage.gif',
     },
     '1931': {
         name: 'Converse Judson',
@@ -67,6 +76,12 @@ export default {
         name: 'San Antonio Warren',
         helmet: '//s.hdnux.com/photos/75/57/16/16184200/3/rawImage.gif',
     },
+    // 6A (no helmet found)
+    '5130': {
+        name: 'South San Antonio',
+        helmet: '',
+    },
+    // 5A schools
     '5185': {
         name: 'San Antonio Burbank',
         helmet: '//s.hdnux.com/photos/75/57/60/16186389/3/rawImage.gif',
@@ -151,11 +166,6 @@ export default {
         name: 'Uvalde',
         helmet: '//s.hdnux.com/photos/75/57/60/16186397/3/rawImage.gif',
     },
-    // 6A (no helmet found)
-    '5130': {
-        name: 'South San Antonio',
-        helmet: '',
-    },
     // 5A (no helmet found)
     '5184': {
         name: 'San Antonio Brackenridge',
@@ -175,10 +185,6 @@ export default {
     },
     '5129': {
         name: 'San Antonio Wagner',
-        helmet: '',
-    },
-    '5143': {
-        name: 'Laredo Martin',
         helmet: '',
     },
     '20187': {
@@ -205,7 +211,11 @@ export default {
         name: 'Somerset',
         helmet: '',
     },
-    // 4A and below (didn't attempt to find helmet)
+    '283': {
+        name: 'Seguin',
+        helmet: '',
+    },
+    // 4A teams (didn't attempt to find helmet) - 9/18
     '5222': {
         name: 'Canyon Lake',
         helmet: '',
@@ -290,6 +300,7 @@ export default {
         name: 'Poteet',
         helmet: '',
     },
+    // 3A teams (didn't attempt to find helmet) - 9/18
     '301': {
         name: 'Goliad',
         helmet: '',
@@ -378,6 +389,7 @@ export default {
         name: 'Stockdale',
         helmet: '',
     },
+    // 2A (didn't attempt to find helmet) - 9/18
     '5301': {
         name: 'Brackett',
         helmet: '',
@@ -442,24 +454,13 @@ export default {
         name: 'Runge',
         helmet: '',
     },
-    '102': {
-        name: 'Houston St. Thomas',
-        helmet: '',
-    },
+    // TAPPS (didn't attempt to find helmet) - 9/18
     '582': {
         name: 'San Antonio Antonian',
         helmet: '',
     },
     '5355': {
         name: 'San Antonio Central Catholic',
-        helmet: '',
-    },
-    '5353': {
-        name: 'Brownsville St. Joseph',
-        helmet: '',
-    },
-    '3928': {
-        name: 'Corpus Christi John Paul II',
         helmet: '',
     },
     '1453': {
@@ -470,48 +471,16 @@ export default {
         name: 'San Antonio Holy Cross',
         helmet: '',
     },
-    '628': {
-        name: 'Texas School for the Deaf',
-        helmet: '',
-    },
     '5359': {
         name: 'Boerne Geneva',
-        helmet: '',
-    },
-    '1458': {
-        name: 'San Marcos Baptist',
         helmet: '',
     },
     '11628': {
         name: 'Schertz John Paul II',
         helmet: '',
     },
-    '3886': {
-        name: 'Waco Reicher',
-        helmet: '',
-    },
-    '245': {
-        name: 'Hallettsville Sacred Heart',
-        helmet: '',
-    },
     '320': {
         name: 'San Antonio St. Gerard',
-        helmet: '',
-    },
-    '5350': {
-        name: 'Shiner St. Paul Catholic',
-        helmet: '',
-    },
-    '4194': {
-        name: 'Temple Central Texas',
-        helmet: '',
-    },
-    '11428': {
-        name: 'Austin St. Dominic Savio',
-        helmet: '',
-    },
-    '211': {
-        name: 'Katy St. John XXIII',
         helmet: '',
     },
     '17386': {

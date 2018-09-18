@@ -1,6 +1,9 @@
 <template>
     <div id="scoreboard">
         <h1>Regional high school football schedule</h1>
+        <div v-if="state.isFetching" class="is-fetching">
+            <img src="//s.hdnux.com/photos/75/60/52/16190107/4/rawImage.gif" />
+        </div>
         <game-day
             v-for="(day, idx) in state.schedule"
             :key="idx"
@@ -17,7 +20,7 @@
 import Store from '../../store';
 
 // components
-import GameDay from '../GameDay/GameDay.vue';
+import GameDay  from '../GameDay/GameDay.vue';
 
 export default {
     name: 'scoreboard',
@@ -53,6 +56,17 @@ export default {
 
             @include mediaquery(700px) {
                 font-size: 2em;
+            }
+        }
+
+        div.is-fetching {
+            width: 100%;
+            text-align: center;
+
+            img {
+                max-width: 441px;
+                height: auto;
+                width: 100%;
             }
         }
     }
