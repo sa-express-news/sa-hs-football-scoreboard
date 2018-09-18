@@ -73,7 +73,7 @@ export default {
         },
         leave: function(el) {
             el.style.height = '0';
-            this.$el.querySelector('div.header').scrollIntoView();
+            // this.$el.querySelector('div.header').scrollIntoView(); // This seems to be conflicting with something on MySA
         }
     },
     components: {

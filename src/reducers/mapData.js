@@ -39,10 +39,8 @@ const mapGameProperties = game => ({
 });
 
 export default (hash, unmappedGame) => {
-    // if game isn't relevant to our current day of the week, or is not a game at all, bail
-    // if (filterData.isDistrict(unmappedGame) || !filterData.isInDateRange(unmappedGame)) return hash;
-
-    if (filterData.isDistrict(unmappedGame)) return hash;
+    // if game isn't relevant to our current day of the week, doesn't involve a local school or is not a game at all, bail
+    if (filterData.isDistrict(unmappedGame) || !filterData.isSAGame(unmappedGame) || !filterData.isInDateRange(unmappedGame)) return hash;
 
     const game = mapGameProperties(Object.assign({}, unmappedGame));
 

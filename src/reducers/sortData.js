@@ -93,7 +93,6 @@ const sortByDistrict = dateTree => {
         tapps: [],
         independent: [],
         a: [],
-        b: [],
         gutter: [],
     };
     
@@ -105,8 +104,6 @@ const sortByDistrict = dateTree => {
             containers.independent.push(key);
         } else if (key.split('-')[1] && key.split('-')[1].indexOf('A') === 1) {
             containers.a.push(key);
-        } else if (key.split('-')[1] && key.split('-')[1].indexOf('B') === 1) {
-            containers.a.push(key);
         } else {
             containers.gutter.push(key);
         }
@@ -115,7 +112,6 @@ const sortByDistrict = dateTree => {
     // sort each container and then concatenate them in order of priority
     const games = [].concat(
         containers.a.sort(sortClass).reduce((res, dist) => res.concat(dateTree.districts[dist].games), []),
-        containers.b.sort(sortClass).reduce((res, dist) => res.concat(dateTree.districts[dist].games), []),
         containers.tapps.sort(sortTAPPS).reduce((res, dist) => res.concat(dateTree.districts[dist].games), []),
         containers.independent.reduce((res, dist) => res.concat(dateTree.districts[dist].games), []),
         containers.gutter.sort(sortGutter).reduce((res, dist) => res.concat(dateTree.districts[dist].games), [])

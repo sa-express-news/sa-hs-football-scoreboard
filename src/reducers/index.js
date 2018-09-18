@@ -1,6 +1,6 @@
 import * as types from '../actions/action-types';
 
-import { parseGames, buildSAMap } from './utils';
+import { parseGames } from './utils';
 
 export default (state, action) => {
     switch(action.type) {
@@ -10,7 +10,6 @@ export default (state, action) => {
             });
 
         case types.RECIEVE_CURRENT_SEASON:
-            buildSAMap(parseGames(action.data.schedules.list));
             return Object.assign({}, state, {
                 schedule: parseGames(action.data.schedules.list),
                 isFetching: false,

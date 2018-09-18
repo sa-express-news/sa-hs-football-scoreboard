@@ -27,8 +27,10 @@ const isInDateRange = () => {
 
 const isSASchool = id => !!schoolHash[id];
 
+const isSAGame = game => isSASchool(game.home.id) || isSASchool(game.away.id);
+
 export default {
     isDistrict,
-    isSASchool,
+    isSAGame,
     isInDateRange: isInDateRange(),
 }

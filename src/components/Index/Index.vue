@@ -50,6 +50,10 @@ export default {
         h1 {
             font-size: 1.5em;
             margin-bottom: 1em;
+
+            @include mediaquery(700px) {
+                font-size: 2em;
+            }
         }
     }
 </style>
