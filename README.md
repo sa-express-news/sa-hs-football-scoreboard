@@ -70,6 +70,8 @@ Finally, the sorted array of game day objects returned by `sortData` is returned
 
 It is worth taking a quick moment to discuss `schoolHash.js`. This file just returns a large object with NewsEngin-assigned team unique IDs as keys and objects as values. These objects each contain a `name<String>` property – the school name – and a `helmet<String>` property – the url to the helmet image stored on the WCM. This helmet list is far from being fully populated. In the near future, it might make sense to switch from helmets to logos.
 
+`schoolHash.js` is used to filter out non-SA schools and to map helmet images to schools.
+
 ## `src/components/GameDay/GameDay.vue`
 
 `GameDay.vue`, and the rest of the `.vue` components, are fairly straightforward. For each game in the `GameDay.games` array a `GameBox` component is instantiated. `GameBox` is the actualy box rendered to HTML featuring game and team details, etc.
