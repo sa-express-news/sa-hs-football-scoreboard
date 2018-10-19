@@ -14,7 +14,7 @@ const setDateRange = (today, step) => {
 
 const isInDateRange = () => {
     const today     = moment().startOf('day');
-    const dayOfWeek = today.day() === 0 ? -3 : today.day();
+    const dayOfWeek = today.day() === 0 ? 7 : today.day();
     const dateRange = setDateRange(today, 4 - dayOfWeek);
 
     return game => {

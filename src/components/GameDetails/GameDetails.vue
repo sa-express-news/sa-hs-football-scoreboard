@@ -7,6 +7,9 @@
         </div>
         <hr />
         <div class="location"><i class="fas fa-map-marker-alt"></i> {{ location }}</div>
+        <div v-if="boxscoreLink" class="boxscore">
+            <a :href="boxscoreLink" target="_blank">Boxscore</a>
+        </div>
     </div>
 </template>
 
@@ -26,6 +29,14 @@ export default {
             type: String,
             required: true,
         },
+        gameID: {
+            type: Number,
+            required: true,
+        },
+        isBoxscoreAvailable: {
+            type: Boolean,
+            required: true,
+        },
     },
     computed: {
         month() {
@@ -34,6 +45,16 @@ export default {
         weekday() {
             return this.date.format('dddd');
         },
+        boxscoreLink() {
+            return this.isBoxscoreAvailable ? this.buildBoxscoreLink() : null;
+        }
+    },
+    methods: {
+        buildBoxscoreLink () {
+            const base      = 'https://www.mysanantonio.com/sports/high_school/scoreboard/?site=default&mkt=sanantonio';
+            const season    = new Date().getFullYear();
+            return `${base}&Season=${season}&tpl=Boxscore&ID=${this.gameID}`;
+        }
     },
 }
 </script>
@@ -68,6 +89,12 @@ export default {
         div.location i {
             font-size: 0.95em;
             color: $en-red;
+        }
+
+        div.boxscore a {
+            color: #FFF;
+            text-decoration-color: $en-red;
+            cursor: pointer;
         }
     }
 </style>

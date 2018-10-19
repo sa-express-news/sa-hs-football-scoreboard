@@ -24,6 +24,8 @@
                 :date="date"
                 :time="time"
                 :location="location"
+                :gameID="gameID"
+                :isBoxscoreAvailable="isBoxscoreAvailable"
                 class="game-details"
             />
         </div>
@@ -38,6 +40,10 @@ import GameDetails  from '../GameDetails/GameDetails.vue';
 export default {
     name: 'game-box',
     props: {
+        gameID: {
+            type: Number,
+            required: true,
+        },
         home: {
             type: Object,
             required: true,
@@ -57,6 +63,11 @@ export default {
         location: {
             type: String,
             required: true,
+        },
+    },
+    computed: {
+        isBoxscoreAvailable () {
+            return this.home.points !== null && this.away.points !== null;
         },
     },
     components: {

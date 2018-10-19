@@ -11,6 +11,7 @@
                 <game-box 
                     v-for="game in games"
                     :key="game.id"
+                    :gameID="game.id"
                     :home="game.home"
                     :away="game.away"
                     :time="game.time"

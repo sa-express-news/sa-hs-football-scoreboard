@@ -4,6 +4,7 @@
         <game-box 
             v-for="game in games.slice(0, 5)"
             :key="game.id"
+            :gameID="game.id"
             :home="game.home"
             :away="game.away"
             :time="game.time"
